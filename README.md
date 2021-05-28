@@ -38,17 +38,14 @@ Deliverable 1: Add Tectonic Plate Data Deliverable Requirements: Using your know
 
 Your final map should look similar to the following image:
 
-name-of-you-image
 
 The tectonic plate data is added as a second layer group. The tectonic plate data is added to the overlay object. The d3.json() callback is working and does the following: The tectonic plate data is passed to the geoJSON() layer The geoJSON() layer adds color and width to the tectonic plate lines The tectonic layer group variable is added to the map The earthquake data and tectonic plate data displayed on the map when the page loads. Results with detail analysis: The tectonic plate data is added as a second layer group. Image with JavaScript & HTML Code below.
 
-Code and Image
+
 
 // 1. Add a 2nd layer group for the tectonic plate data. let allEarthquakes = new L.LayerGroup(); let tectonicPlates = new L.LayerGroup(); name-of-you-image
 
 The tectonic plate data is added to the overlay object. Image with JavaScript & HTML Code below.
-
-Code and Image
 
 // 2. Add a reference to the tectonic plates group to the overlays object. let overlays = { "Earthquakes": allEarthquakes, "Tectonic Plates": tectonicPlates,
 
@@ -68,9 +65,6 @@ The d3.json() callback is working and does the following: The tectonic plate dat
 
 The earthquake data and tectonic plate data displayed on the map when the page loads. Image with JavaScript & HTML Code below.
 
-Code and Image
-
-// COLUMBIA ENGINEERING // By Emmanuel Martinez // Module 13
 
   // Then add the tectonicplates layer to the map.
   tectonicPlates.addTo(map);
@@ -82,7 +76,6 @@ Deliverable 2: Add Major Earthquake Data Deliverable Requirements: Using your kn
 
 The major earthquake data is added as a third layer group. The major earthquake data is added to the overlay object. The d3.json() callback is working and does the following: Sets the color and diameter of each earthquake. The major earthquake data is passed to the geoJSON() layer. The geoJSON() layer creates a circle for each major earthquake, and adds a popup for each circle to display the magnitude and location of the earthquake The major earthquake layer group variable is added to the map All the earthquake data and tectonic plate data are displayed on the map when the page loads and the datasets can be toggled on or off. Results with detail analysis: The major earthquake data is added as a third layer group. Image with JavaScript & HTML Code below.
 
-Code and Image
 
 // DELIVERABLE 2 
 
@@ -90,7 +83,7 @@ Code and Image
 
 The major earthquake data is added to the overlay object. Image with JavaScript & HTML Code below.
 
-Code and Image
+
 
 // DELIVERABLE 2 
 
@@ -98,7 +91,6 @@ Code and Image
 
 The d3.json() callback is working and does the following: Sets the color and diameter of each earthquake. The major earthquake data is passed to the geoJSON() layer. The geoJSON() layer creates a circle for each major earthquake, and adds a popup for each circle to display the magnitude and location of the earthquake The major earthquake layer group variable is added to the map Image with JavaScript & HTML Code below.
 
-Code and Image
 
 // DELIVERABLE 2 
 
@@ -119,7 +111,7 @@ Location: " + feature.properties.place); } }).addTo(majorEarthquakes);
 
 All the earthquake data and tectonic plate data are displayed on the map when the page loads and the datasets can be toggled on or off. Image with JavaScript & HTML Code below.
 
-Code and Image
+
 
 d3.json("https://raw.githubusercontent.com/fraxen/tectonicplates/master/GeoJSON/PB2002_boundaries.json").then(function(plateData) { // Adding our geoJSON data, along with style information, to the tectonicplates // layer. L.geoJson(plateData, { color: "#ff6500", weight: 2 }) .addTo(tectonicPlates);
 
@@ -135,7 +127,6 @@ name-of-you-image
 
 A third map tile layer is created. The third map is added to the overlay object. All the earthquake data and tectonic plate data are displayed on the all maps of the webpage. Results with detail analysis: A third map tile layer is created. Image with JavaScript & HTML Code below.
 
-Code and Image
 
 // DELIVERABLE 3 
 
@@ -143,14 +134,12 @@ Code and Image
 
 The third map is added to the overlay object. Image with JavaScript & HTML Code below.
 
-Code and Image
 
 // DELIVERABLE 3 
 
 // Create a base layer that holds all three maps. let baseMaps = { "Streets": streets, "Satellite": satelliteStreets, "Dark": dark }; name-of-you-image
 
 All the earthquake data and tectonic plate data are displayed on the all maps of the webpage. Image with JavaScript & HTML Code below.
-
 
 
 // 9. Create the layout for the bar chart. 
