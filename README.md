@@ -1,7 +1,5 @@
 # Mapping_Earthquakes
 
-Overview of Project Basil and Sadhana like how you created your earthquake map with two different maps and the earthquake overlay. Now, Basil and Sadhana would like to see the earthquake data in relation to the tectonic plates’ location on the earth, and they would like to see all the earthquakes with a magnitude greater than 4.5 on the map, and they would like to see the data on a third map.
-
 Deliverable 1: Add Tectonic Plate Data Deliverable 2: Add Major Earthquake Data Deliverable 3: Add an Additional Map Deliverable 4: A written report on the Mapping Earthquakes analysis README.md. Resources and Before Start Notes: Data Source: tectonic_plate_starter_logic.js, tectonic_plate_starter_logic.js, tectonic_plate_starter_logic.js and index.html Data Tools: JavaScript, JSON, GeoJSON and IO (Web Server) Software: 
 
 ES6+, ECMAScript and Visual Studio Code 1.50.0 For more information, visit The Mapbox API.
@@ -14,29 +12,14 @@ Tasks To complete this project, use a URL for GeoJSON earthquake data from the U
 
 Approach Your approach will be to use the JavaScript and the D3.js library to retrieve the coordinates and magnitudes of the earthquakes from the GeoJSON data. You'll use the Leaflet library to plot the data on a Mapbox map through an API request and create interactivity for the earthquake data.
 
-Now that you have an overview of the project plan, let's set up a Mapbox account and get the API token you'll need to create geographical maps.
-
-The Leaflet JavaScript Library On the Leaflet homepage, scroll midpage and click the Leaflet Quick Start Guide link:
-
-name-of-you-image
-
-The Leaflet Quick Start Guide provides steps for setting up a Leaflet map. To begin, scroll midpage to the "Preparing your page" section:
-
-name-of-you-image
-
-The "Preparing your page" section includes links and HTML code that we'll add to our Mapping Earthquakes - index.html page.
-
-Use the Leaflet Documentation The Leaflet Quick Start Guide provides the tileLayer() code:
-
-name-of-you-image
-
-We can copy this tile layer code and assign it to the streets variable, since the tile layer will create a street-level map. Add the following code block to your logic.js file:
-
 // We create the tile layer that will be the background of our map. let streets = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', { attribution: 'Map data © OpenStreetMap contributors, CC-BY-SA, Imagery (c) Mapbox', maxZoom: 18, id: 'mapbox.streets', accessToken: API_KEY }); // Then we add our 'graymap' tile layer to the map. streets.addTo(map); Let's move on!
 
-Deliverable 1: Add Tectonic Plate Data Deliverable Requirements: Using your knowledge of JavaScript, Leaflet.js, and geoJSON data, you’ll add tectonic plate data using d3.json(), add the data using the geoJSON() layer, set the tectonic plate LineString data to stand out on the map, and add the tectonic plate data to the overlay object with the earthquake data.
+### Deliverable 1: 
+#### Add Tectonic Plate Data Deliverable Requirements: 
 
-Your final map should look similar to the following image:
+Using your knowledge of JavaScript, Leaflet.js, and geoJSON data, you’ll add tectonic plate data using d3.json(), add the data using the geoJSON() layer, set the tectonic plate LineString data to stand out on the map, and add the tectonic plate data to the overlay object with the earthquake data.
+
+![image](https://user-images.githubusercontent.com/57301554/122845685-dba1b700-d2c9-11eb-9653-8dd7f078fd17.png)
 
 
 The tectonic plate data is added as a second layer group. The tectonic plate data is added to the overlay object. The d3.json() callback is working and does the following: The tectonic plate data is passed to the geoJSON() layer The geoJSON() layer adds color and width to the tectonic plate lines The tectonic layer group variable is added to the map The earthquake data and tectonic plate data displayed on the map when the page loads. Results with detail analysis: The tectonic plate data is added as a second layer group. Image with JavaScript & HTML Code below.
@@ -63,36 +46,29 @@ The d3.json() callback is working and does the following: The tectonic plate dat
 
 // 3. Use d3.json to make a call to get our Tectonic Plate geoJSON data. d3.json("https://raw.githubusercontent.com/fraxen/tectonicplates/master/GeoJSON/PB2002_boundaries.json").then(function(plateData) { // Adding our geoJSON data, along with style information, to the tectonicplates // layer. L.geoJson(plateData, { color: "#ff6500", weight: 2 }) .addTo(tectonicPlates); name-of-you-image
 
-The earthquake data and tectonic plate data displayed on the map when the page loads. Image with JavaScript & HTML Code below.
 
 
-  // Then add the tectonicplates layer to the map.
-  tectonicPlates.addTo(map);
-name-of-you-image
+### Deliverable 2: 
 
-Deliverable 2: Add Major Earthquake Data Deliverable Requirements: Using your knowledge of JavaScript, Leaflet.js, and geoJSON data, you’ll add major earthquake data to the map using d3.json(), and a color and set the radius of the circle based on the magnitude of earthquake, and add a popup marker for each earthquake that displays the magnitude and location of the earthquake using the GeoJSON layer, geoJSON().
+#### Add Major Earthquake Data Deliverable Requirements: 
 
-
+Using your knowledge of JavaScript, Leaflet.js, and geoJSON data, you’ll add major earthquake data to the map using d3.json(), and a color and set the radius of the circle based on the magnitude of earthquake, and add a popup marker for each earthquake that displays the magnitude and location of the earthquake using the GeoJSON layer, geoJSON().
 
 The major earthquake data is added as a third layer group. The major earthquake data is added to the overlay object. The d3.json() callback is working and does the following: Sets the color and diameter of each earthquake. The major earthquake data is passed to the geoJSON() layer. The geoJSON() layer creates a circle for each major earthquake, and adds a popup for each circle to display the magnitude and location of the earthquake The major earthquake layer group variable is added to the map All the earthquake data and tectonic plate data are displayed on the map when the page loads and the datasets can be toggled on or off. Results with detail analysis: The major earthquake data is added as a third layer group. Image with JavaScript & HTML Code below.
 
 
 // DELIVERABLE 2 
 
-// 1. Add a 3rd layer group for the tectonic plate data. let allEarthquakes = new L.LayerGroup(); let tectonicPlates = new L.LayerGroup(); let majorEarthquakes = new L.LayerGroup(); name-of-you-image
+// 1. Add a 3rd layer group for the tectonic plate data. let allEarthquakes = new L.LayerGroup(); let tectonicPlates = new L.LayerGroup(); let majorEarthquakes = new L.LayerGroup()
 
-The major earthquake data is added to the overlay object. Image with JavaScript & HTML Code below.
+![image](https://user-images.githubusercontent.com/57301554/122845860-389d6d00-d2ca-11eb-96bb-273b4e1117e0.png)
 
+// 2. Add a reference to the tectonic plates group to the overlays object. let overlays = { "Earthquakes": allEarthquakes, "Tectonic Plates": tectonicPlates, "Major Earthquakes": majorEarthquakes };
 
-
-// DELIVERABLE 2 
-
-// 2. Add a reference to the tectonic plates group to the overlays object. let overlays = { "Earthquakes": allEarthquakes, "Tectonic Plates": tectonicPlates, "Major Earthquakes": majorEarthquakes }; name-of-you-image
+![image](https://user-images.githubusercontent.com/57301554/122845905-55d23b80-d2ca-11eb-99b1-b8e14ce1e24c.png)
 
 The d3.json() callback is working and does the following: Sets the color and diameter of each earthquake. The major earthquake data is passed to the geoJSON() layer. The geoJSON() layer creates a circle for each major earthquake, and adds a popup for each circle to display the magnitude and location of the earthquake The major earthquake layer group variable is added to the map Image with JavaScript & HTML Code below.
 
-
-// DELIVERABLE 2 
 
 // 3. Retrieve the major earthquake GeoJSON data >4.5 mag for the week. d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_week.geojson").then(function(data) {
 
@@ -111,19 +87,18 @@ Location: " + feature.properties.place); } }).addTo(majorEarthquakes);
 
 All the earthquake data and tectonic plate data are displayed on the map when the page loads and the datasets can be toggled on or off. Image with JavaScript & HTML Code below.
 
-
-
 d3.json("https://raw.githubusercontent.com/fraxen/tectonicplates/master/GeoJSON/PB2002_boundaries.json").then(function(plateData) { // Adding our geoJSON data, along with style information, to the tectonicplates // layer. L.geoJson(plateData, { color: "#ff6500", weight: 2 }) .addTo(tectonicPlates);
 
   // Then add the tectonicplates layer to the map.
   tectonicPlates.addTo(map);
-}); }); name-of-you-image
+}); })
+
 
 Deliverable 3: Add an Additional Map Deliverable Requirements: Using your knowledge of JavaScript and Leaflet.js add a third map style to your earthquake map.
 
 Your final map should look similar to the following image:
 
-name-of-you-image
+![image](https://user-images.githubusercontent.com/57301554/122846196-f4f73300-d2ca-11eb-9f61-fdf60bd3605d.png)
 
 A third map tile layer is created. The third map is added to the overlay object. All the earthquake data and tectonic plate data are displayed on the all maps of the webpage. Results with detail analysis: A third map tile layer is created. Image with JavaScript & HTML Code below.
 
@@ -131,8 +106,6 @@ A third map tile layer is created. The third map is added to the overlay object.
 // DELIVERABLE 3 
 
 // We create a third tile layer that will be the background of our map. let dark = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/dark-v10/tiles/{z}/{x}/{y}?access_token={accessToken}', { attribution: 'Map data © OpenStreetMap contributors, CC-BY-SA, Imagery (c) Mapbox', maxZoom: 18, accessToken: API_KEY }); name-of-you-image
-
-The third map is added to the overlay object. Image with JavaScript & HTML Code below.
 
 
 // DELIVERABLE 3 
